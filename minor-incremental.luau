@@ -26,6 +26,13 @@ local function Sell()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new( -18, 4, 53)
     end)
 end
+local function Rebirth()
+    local args = {
+        "DoRebirth"
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rebirth"):FireServer(unpack(args))
+
+end
 local SelectedOre = "Coal"
 local AmountToMine = 1
 Tab:CreateToggle({
@@ -74,5 +81,18 @@ local Input = Tab:CreateInput({
         if tonumber(Text) then
             AmountToMine = tonumber(Text)
         end
+   end,
+})
+Tab:CreateToggle({
+   Name = "Auto Rebirth",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+        _G.AutoRebirth = Value
+        task.spawn(function()
+            while _G.AutoRebirth and task.wait(0.2) do
+                Rebirth()
+            end
+        end)
    end,
 })
