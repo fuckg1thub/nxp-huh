@@ -1,3 +1,5 @@
+-- If you actually need to skid from this then you are the biggest re***d i have ever seen ☠️
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "NXP Hub",
